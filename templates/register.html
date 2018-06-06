@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--FORM FOR REGISTRATION, SENT TO REG.PY TO UPDATE CREDS.CSV-->
+<html>
+<title>Welcome to the Terrorist Blog - Please Sign in</title>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container" align="center">
+	<h4>New Terrorist Registration</h4>
+
+	<table>
+	<form id="reg" class="form-horizontal" action="cgi-bin\reg.py" method="post">
+		<tbody>
+			<tr>
+				<td>
+					First Name:
+				</td>
+				<td>
+					<input class="input" type="text" name="first">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Last Name:
+				</td>
+				<td>
+					<input class="input" type="text" name="last">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Gender:
+				</td>
+				<td>
+					Male <input type="radio" name="gender" value="male"> Female <input type="radio" name="gender" value="female"><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Username:
+				</td>
+				<td>
+					<input class="input" type="text" name="uname">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Password:
+				</td>
+				<td>
+					<input class="input" type="password" name="pass">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Verify Password:
+				</td>
+				<td>
+					<input class="input" type="password" name="vpass">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<input class="btn btn-primary" type="submit" value="Submit">
+</body>
+</html>

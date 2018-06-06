@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>مرحبا بكم في مدونة الإرهابية</title>
+<head>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<form class="navbar-form navbar-right" role="search"  id="creds" action="{{ url_for('auth') }}" method="post">
+				<div class="form-group">
+					<input class="form-control" type="text" id="loginUsername" name="username" placeholder="Username">
+					<input class="form-control" type="password" id="loginPassword" name="password" placeholder="Password">
+				</div>
+				<button type="submit" class="btn btn-primary">Log In</button>
+			</form>
+			<ul class="nav navbar-nav navbar-left">
+       			<li><a href="{{ url_for('login') }}">منتدى محبى الماعز</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="col-lg-6">
+		<img src="{{ url_for('static', filename='img/flag.png') }}" width="666">
+	</div>
+	<form class="form-horizontal" id="reg" action="{{ url_for('register') }}" method="post">
+		<fieldset>
+			<div class="col-lg-10 col-lg-offset-2">
+				<br><h3>التسجيل الإرهاب الجديد</h3>
+			</div>
+			<div class="form-group">
+			  	<label for="first" class="col-lg-2 control-label">First Name:</label>
+			  	<div class="col-lg-10">
+					<input class="form-control" id="first" name="first" placeholder="First Name" type="text">
+		  		</div>
+		  	</div>
+		 	<div class="form-group">
+			  	<label for="last" class="col-lg-2 control-label">Last Name:</label>
+			  	<div class="col-lg-10">
+				  	<input class="form-control" id="last" name="last" placeholder="Last Name" type="text">
+		  		</div>
+		  	</div>
+		  	<div class="form-group">
+			  	<label for="inputEmail" class="col-lg-2 control-label">Email:</label>
+			  	<div class="col-lg-10">
+				  	<input class="form-control" id="inputEmail" name="email" placeholder="Email" type="text">
+		  		</div>
+		  	</div>
+			<div class="form-group">
+			  	<label for="username" class="col-lg-2 control-label">Username:</label>
+			  	<div class="col-lg-10">
+				  	<input class="form-control" id="username" name="username" placeholder="Username" type="text">
+		  		</div>
+		  	</div>
+		  	<div class="form-group">
+			  	<label for="inputPassword" class="col-lg-2 control-label">Password:</label>
+			  	<div class="col-lg-10">
+				  	<input class="form-control" id="inputPassword" placeholder="Password" name="password" type="password">
+					<br>
+				</div>
+			<div class="col-lg-10 col-lg-offset-1">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" id="hateusa" name="hateusa">
+							عن طريق فحص هذا المربع الذي نتفق على أن الولايات المتحدة الأمريكية تمتص <br>تماما وارتكاب حياتك لخدمة ISIS في مقابل حزام ناسف واثنين من الماعز.
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-3">
+					<br>
+					<button type="reset" class="btn btn-default">Cancel</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+	  	</fieldset>
+	</form>
+</body>
+</html>

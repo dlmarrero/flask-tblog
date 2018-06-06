@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome to the Terrorist Blog - Please Sign in</title>
+<head>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<form class="navbar-form navbar-right" role="search"  id="creds" action="{{ url_for('auth') }}" method="post">
+				<div class="form-group">
+					<input class="form-control" type="text" id="email" name="email" placeholder="E-mail">
+					<input class="form-control" type="password" id="password" name="password" placeholder="Password">
+				</div>
+				<button type="submit" class="btn btn-primary">Log In</button>
+			</form>
+			<ul class="nav navbar-nav navbar-left">
+       			<li><a href="{{ url_for('login') }}">منتدى محبى الماعز</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <table border = 1>
+
+            <tr>
+               <td> {{ authed }} </td>
+            </tr>
+
+      </table>
+
+</body>
+</html>

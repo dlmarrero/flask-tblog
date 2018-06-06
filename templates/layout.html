@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.min.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% block head %}{% endblock %}
+    <title>مباراة الماعز كوم | {% block title %}{% endblock%}</title>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      {% if current_user.is_authenticated %}
+        <form class="navbar-form navbar-right" role="search"  id="search" action="{{ url_for('search') }}" method="post">
+        <div class="form-group">
+          <input class="form-control" type="text" id="search" name="search" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-primary">Go</button>
+        </form>
+
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ current_user.id }}<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="{{ url_for('user', uname= current_user.id) }}">My Profile</a></li>
+            <li><a href="#">Write Post</a></li>
+            <li><a href="#">Messages&nbsp;<span class="badge">14</span></a></li>
+            <li><a href="#">Friends&nbsp;<span class="badge">2</span></a></li>
+            <li class="divider"></li>
+            <li><a href="#">Settings</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#">منتدى محبى الماعز</a></li>
+        </ul>
+      {% else %}
+        <form class="navbar-form navbar-right" role="search"  id="creds" action="{{ url_for('auth') }}" method="post">
+        <div class="form-group">
+          <input class="form-control" type="text" id="loginUsername" name="username" placeholder="Username">
+          <input class="form-control" type="password" id="loginPassword" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+        {% with messages = get_flashed_messages(category_filter=["login"]) %}
+          {% if messages %}
+            <ul class="nav navbar-nav navbar-right">
+            {% for message in messages %}
+                <p class="text-danger"><br><strong>{{ message }}</strong></p>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#">منتدى محبى الماعز</a></li>
+        </ul>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div id="content" class="container-fluid" align="center">{% block content %}{% endblock %}</div>
+
+</body>
+</html>

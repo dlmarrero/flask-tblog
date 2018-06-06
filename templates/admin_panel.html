@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block title %}Admin View{% endblock %}
+{% block content %}
+<div class="container" width="60%">
+<table class="table table-striped table-hover">
+  <legend>USERS</legend>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Email</th>
+      <th>Member Since</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% set i = 1 %}
+  {% for row in rows %}
+    <tr>
+      {% for col in row %}
+        <td>{{ col }}</td>
+      {% endfor %}
+      <td><form action="{{ url_for('delete_user') }}" method="POST"><input type="hidden" value="{{ row[1] }}" name="username"><button type="submit" class="close">&times;</button></td></form>
+    </tr>
+    {% set i = i + 1 %}
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

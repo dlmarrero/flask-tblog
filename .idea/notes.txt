@@ -1,0 +1,71 @@
+TODO: *Set up layout.html and use extend functionality
+
+
+-Registration
+	|_____Check to see if username or e-mail already exists in db
+	|_____Hash pws
+
+-Authentication
+	|_____Auth by username instead of email
+	|_____Session tokens  (flask-login)
+	|_____Do not display navbar log in fields if auth'd, show sign out, friends, my blog
+	|_____Brand link points to control panel view
+
+-Admin view
+	|_____Control panel on left side
+	|	|_____Profile picture on top left (upload link, names it profile.jpg and overwrites)
+	|	|_____Add post (Post ID assigned to each post, may overlap with other users: user1/id1)
+	|	
+	|_____Post view on right side
+		|_____Delete post by ID (X next to each post in admin view)
+
+-Profile view
+	|_____Ability to add friend and comment if authenticated
+	|_____Profile picture top left (same as admin view)
+	|_____When naving to URL of user, uname variable should be checked against db to load page
+
+
+
+NOTES
+================
+
+* CAN CREATE LAYOUT.HTML AND USE "extends" TO BUILD OTHER PAGES CONTENT. USE AN IF STATEMENT TO DETERMINE WHICH NAVBAR TO DISPLAY
+
+{% extends "layout.html" %}
+{% block body %}
+  <form action="" method=post class="form-horizontal">
+    <h2>Sign up for FlaskLogin(Todo) Application </h2>
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="username" name="username" class="input-xlarge"
+            placeholder="Enter Username" value="{{ request.form.username }}"
+            required>
+        </div>
+    </div>
+ 
+    <div class="control-group">
+        <div class="controls">
+          <input type="password" id="password" name="password" class="input-xlarge"
+            placeholder="Enter Password" value="{{ request.form.password }}"
+            required>
+        </div>
+    </div>
+ 
+    <div class="control-group">
+        <div class="controls">
+          <input type="email" id="email" name="email" class="input-xlarge"
+            placeholder="Enter Email" value="{{ request.form.username }}"
+            required>
+        </div>
+    </div>
+ 
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Signup</button>
+        </div>
+    </div>
+  </form>
+{% endblock %}
+
+=========================================
+
